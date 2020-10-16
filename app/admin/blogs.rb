@@ -5,16 +5,16 @@ ActiveAdmin.register Blog do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :title, :content, :user_id
+  permit_params :is_approved
+  actions :all, except: [:create, :new]
+
   #
   # or
   #
-  actions :all, except: [:destroy]
-
-  permit_params do
-    permitted = [:title, :content]
-    permitted << :other if params[:action] == 'create' && current_user.superadmin?
-    permitted
-  end
+  # permit_params do
+  #   permitted = [:title, :content, :user_id, :is_approved]
+  #   permitted << :other if params[:action] == 'create' && current_user.admin?
+  #   permitted
+  # end
   
 end
