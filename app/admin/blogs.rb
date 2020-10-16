@@ -9,8 +9,10 @@ ActiveAdmin.register Blog do
   #
   # or
   #
+  actions :all, except: [:destroy]
+
   permit_params do
-    permitted = [:title, :content, :user_id]
+    permitted = [:title, :content]
     permitted << :other if params[:action] == 'create' && current_user.superadmin?
     permitted
   end
