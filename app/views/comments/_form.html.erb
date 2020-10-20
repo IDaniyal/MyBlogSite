@@ -1,4 +1,9 @@
 <%= form_for [@blog, @comment] do |f| %>
   <%= f.text_area :text %>
+  <br>
+  <p>
+    <%= f.label :photo, 'Add attachment to comment' %>
+    <%= f.file_field :photo %>
+  </p>
   <%= f.submit 'Leave Comment' %>
 <% end %>

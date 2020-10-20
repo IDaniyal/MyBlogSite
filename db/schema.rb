@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201019093222) do
+ActiveRecord::Schema.define(version: 20201020113239) do
 
   create_table "blogs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
@@ -28,8 +28,23 @@ ActiveRecord::Schema.define(version: 20201019093222) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.string "photo_file_name"
+    t.string "photo_content_type"
+    t.bigint "photo_file_size"
+    t.datetime "photo_updated_at"
     t.index ["blog_id"], name: "index_comments_on_blog_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "uploads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "photo_file_name"
+    t.string "photo_content_type"
+    t.bigint "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.bigint "blog_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["blog_id"], name: "index_uploads_on_blog_id"
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -42,6 +57,10 @@ ActiveRecord::Schema.define(version: 20201019093222) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "superadmin", default: false, null: false
+    t.string "photo_file_name"
+    t.string "photo_content_type"
+    t.bigint "photo_file_size"
+    t.datetime "photo_updated_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -49,4 +68,5 @@ ActiveRecord::Schema.define(version: 20201019093222) do
   add_foreign_key "blogs", "users"
   add_foreign_key "comments", "blogs"
   add_foreign_key "comments", "users"
+  add_foreign_key "uploads", "blogs"
 end

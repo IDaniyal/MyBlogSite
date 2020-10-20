@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
   def create
     unless @blog.nil?
       @user = current_user
-      @user.comments.create!(blog: @blog,  text: comment_params[:text])
+      @user.comments.create!(comment_params.merge({blog:@blog}))
     end
     redirect_to blog_path(params[:blog_id])
   end
@@ -57,6 +57,6 @@ class CommentsController < ApplicationController
   end
 
     def comment_params
-      params.require(:comment).permit(:text)
+      params.require(:comment).permit(:text, :photo)
     end
 end

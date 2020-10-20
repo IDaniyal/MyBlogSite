@@ -2,16 +2,22 @@
   <article class="media">
     <div class="media-content">
       <div class="content">
-        <li>
-          <strong><%= comment.user.name%></strong>
-          <p><%= comment.text %></p>
-        </li>
-        <% if comment.user.id == current_user.id %>
-          <tr>
-            <td><%= link_to 'Edit', edit_blog_comment_path(comment.blog_id, comment.id) %></td>
-            <td><%= link_to 'Destroy', blog_comment_path(comment.blog_id, comment.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          </tr>
-        <% end  %>
+        <% if comment.user.photo.present? %>
+          <%= image_tag comment.user.photo.url(:thumb) %>
+        <% end %>
+        <strong><%= comment.user.name %></strong>
+        <p><%= comment.text %></p>
+        <% if comment.photo.present? %>
+          <p><%= image_tag comment.photo.url(:medium) %></p>
+        <% end %>
+        <% unless current_user.nil? %>
+          <% if comment.user.id == current_user.id %>
+            <tr>
+              <td><%= link_to 'Edit', edit_blog_comment_path(comment.blog_id, comment.id) %></td>
+              <td><%= link_to 'Destroy', blog_comment_path(comment.blog_id, comment.id), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+            </tr>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </article>

@@ -23,7 +23,7 @@ class BlogsController < ApplicationController
 
     respond_to do |format|
       if @blog.save
-        format.html { redirect_to blogs_path, notice: 'Blog was successfully created.' }
+        format.html { redirect_to blogs_path, notice: 'Blog was successfully sent for review.' }
       else
         format.html { render :new }
       end
@@ -55,6 +55,6 @@ class BlogsController < ApplicationController
     end
 
     def blog_params
-      params.require(:blog).permit(:title, :content)
+      params.require(:blog).permit(:title, :content, files: [])
     end
 end

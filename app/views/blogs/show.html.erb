@@ -1,4 +1,12 @@
 <h1><%= @blog.title %></h1>
+<div>
+  <% @blog.uploads.each do |upload|  %>
+    <div>
+        <p><%= image_tag upload.photo.url(:medium) %></p>
+      <% end %>
+    </div>
+</div>
+
 <body><%= @blog.content %></body>
 <br><br>
 <%= link_to 'Edit', edit_blog_path(@blog) %> |
@@ -8,11 +16,13 @@
 <% if @blog.comments.any? %>
   <%= render @blog.comments %>
 <% else %>
-	<p> No comments yet </p>
+  <p> No comments yet </p>
 <% end %>
-<div class="comment-form">
-	<hr />
-	<h3 class="subtitle is-3">Leave a reply</h3>
-	<%= render 'comments/form', comment: @comment %>
-</div>
+<% unless current_user.nil? %>
+  <div class="comment-form">
+    <hr/>
+    <h3 class="subtitle is-3">Leave a reply</h3>
+    <%= render 'comments/form', comment: @comment %>
+  </div>
+<% end %>
 

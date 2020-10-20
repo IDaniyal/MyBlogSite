@@ -6,15 +6,18 @@
   <body><%= blog.content %></body>
   <br>
   <td><%= link_to 'Show', blog %></td>
-  <% if blog.user_id == current_user.id %>
-    <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
-    <td><%= link_to 'Destroy', blog, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+  <% unless current_user.nil? %>
+    <% if blog.user_id == current_user.id %>
+      <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
+      <td><%= link_to 'Destroy', blog, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+    <% end %>
   <% end %>
   <hr/>
 <% end %>
 
 <br><br>
-
-<%= link_to 'New Blog', new_blog_path %>
+<% unless current_user.nil? %>
+  <%= link_to 'New Blog', new_blog_path %>
+<% end %>
 <%= link_to 'Home Page', home_index_path %>
 
