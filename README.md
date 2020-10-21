@@ -1,24 +1,12 @@
 # README
+This is a Demo project for practicing the ROR basics which I had grasped in 6 days Rails training session.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The blog site consists of the following functionalities:
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+-Login/Signup using devise and addiytionally adding the name and picture for the user
+-Admin portal using Active Admin
+-Blogs creation and editing
+-Comments on the blog, from registered and non-registered user
+-Blogs approval through admin portal
+-Attach pictures in the comments
+-Search the blogs based on title, content and author name
