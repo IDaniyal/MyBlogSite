@@ -1,5 +1,6 @@
 class Blog < ApplicationRecord
   scope :approved_blogs, -> { where(is_approved: true) }
+  validates :title, :length => { :minimum => 5 }
   has_many :comments, dependent: :destroy
   belongs_to :user
 

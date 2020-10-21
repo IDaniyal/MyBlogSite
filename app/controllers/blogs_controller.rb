@@ -2,7 +2,11 @@ class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
 
   def index
-    @blogs = Blog.approved_blogs
+    @search = Blog.approved_blogs.ransack(params[:q])
+    @blogs = @search.result
+    unless params[:q].nil?
+      @search.build_condition
+    end
   end
 
   def show

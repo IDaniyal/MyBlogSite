@@ -1,6 +1,13 @@
 <h1>Blogs</h1>
 <hr/>
 
+<%= search_form_for @search do |f| %>
+  <%= f.label :title_or_content_cont %>
+  <%= f.search_field :title_or_content_cont %>
+  <%= f.submit %>
+<% end %>
+<%= link_to "Reset Search", blogs_path %>
+
 <% @blogs.each do |blog| %>
   <h2><%= blog.title %></h2>
   <body><%= blog.content %></body>

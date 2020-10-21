@@ -36,8 +36,8 @@ gem 'toastr-rails'
 gem 'activeadmin'
 gem 'inherited_resources'
 gem 'paperclip'
-gem 'elasticsearch-model'
-gem 'elasticsearch-rails'
+
+gem 'ransack'
 
 
 # Use Capistrano for deployment
