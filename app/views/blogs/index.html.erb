@@ -3,7 +3,7 @@
 
 <%= search_form_for @search do |f| %>
   <%= f.label :title_or_content_cont %>
-  <%= f.search_field :title_or_content_cont %>
+  <%= f.search_field :title_or_content_or_user_name_cont %>
   <%= f.submit %>
 <% end %>
 <%= link_to "Reset Search", blogs_path %>

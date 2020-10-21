@@ -4,8 +4,8 @@
   <% @blog.uploads.each do |upload|  %>
     <div>
         <p><%= image_tag upload.photo.url(:medium) %></p>
-      <% end %>
     </div>
+<% end %>
 </div>
 
 <body><%= @blog.content %></body>

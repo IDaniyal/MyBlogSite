@@ -23,6 +23,12 @@
   </div>
   <br>
 
+  <% blog.uploads.each do |upload|  %>
+    <div>
+      <p><%= image_tag upload.photo.url(:medium) %></p>
+      <td><%= link_to 'Remove the picture', blog_upload_path(@blog.id, upload.id), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+    </div>
+  <% end %>
 
   <div class="field">
     <p>
